@@ -1,4 +1,5 @@
 import { createElement } from "../helper/createElement.js"
+import { shuffleArray } from "../helper/shuffle.js";
 import { showAlert } from "./showAlert.js";
 
 export const createPairs = (app) => {
@@ -12,7 +13,7 @@ export const createPairs = (app) => {
 
   const buttonReturn = createElement('button', {
     className: 'card__return',
-    ariaLable: 'Возврат к категориям',
+    ariaLabel: 'Возврат к категориям',
   });
 
   const buttonCard = createElement('button', {
@@ -29,9 +30,9 @@ export const createPairs = (app) => {
     textContent: 'two',
   });
 
-  buttonCard.append( front, back);
-  container.append( buttonReturn, buttonCard);
-  pairs.append( container);
+  buttonCard.append(front, back);
+  container.append(buttonReturn, buttonCard);
+  pairs.append(container);
 
   const cardControler = data => {
     let index = 0;
@@ -40,22 +41,27 @@ export const createPairs = (app) => {
     back.textContent = data[index][1];
 
     const flipCard = () => {
-      buttonCard.classList.add('card__item_flipped');
+      buttonCard.classList.add('card__item_flipped'); 
       buttonCard.removeEventListener('click', flipCard);
+
       setTimeout(() => {
         buttonCard.classList.remove('card__item_flipped');
+
         setTimeout(() => {
           index += 1;
-          if (index === data.lenght) {
+          if (index === data.length) {
             front.textContent = 'the end';
             showAlert('Вернемся к категориям!', 2000);
+
             setTimeout(() => {
               buttonReturn.click();
             }, 2000);
             return;
           };
+
           front.textContent = data[index][0];
           back.textContent = data[index][1];
+
           setTimeout(() => {
             buttonCard.addEventListener('click', flipCard);
           }, 200);
@@ -64,11 +70,12 @@ export const createPairs = (app) => {
     };
 
     buttonCard.addEventListener('click', flipCard);
-  } 
+  }; 
 
   const mount = data => {
     app.append(pairs);
-    cardControler(data.pairs);
+    const newDate = shuffleArray(data.pairs);
+    cardControler(newDate);
   };
 
   const unmount = () => {

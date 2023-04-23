@@ -14,11 +14,11 @@ export const showAlert = (text, time = 3000) => {
   document.body.append(alertBlock);
 
   setTimeout(() => {
-    alertBlock.classList.add('alert_show')
+    alertBlock.classList.add('alert_show');
   }, 0);
 
   setTimeout(() => {
-    alertBlock.classList.remove('alert_show')
+    alertBlock.classList.remove('alert_show');
 
     setTimeout(() => {
       alertBlock.remove();
