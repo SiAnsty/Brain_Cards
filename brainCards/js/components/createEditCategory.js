@@ -124,8 +124,8 @@ export const createEditCategory = (app) => {
   });
 
   const parseData = () => {
-    const cellsMain = document.querySelectorAll('.table__cel_one');
-    const cellsSecond = document.querySelectorAll('.table__cel_two');
+    const cellsMain = document.querySelectorAll('.table__cell_one');
+    const cellsSecond = document.querySelectorAll('.table__cell_two');
 
     const data = {
       pairs: [],
@@ -151,7 +151,6 @@ export const createEditCategory = (app) => {
     return data;
   };
 
-
   const mount = (data = { title: TITLE, pairs: [] }) => {
     tbody.textContent = '';
     title.textContent = data.title;
@@ -171,7 +170,6 @@ export const createEditCategory = (app) => {
 
     app.append(editCategory);
   };
-
 
   const unmount = () => {
     editCategory.remove();

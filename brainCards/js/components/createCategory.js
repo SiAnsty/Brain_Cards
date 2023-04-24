@@ -69,5 +69,4 @@ export const createCategory = (app) => {
   }
 
   return { mount, unmount, categoryList };
-
 }

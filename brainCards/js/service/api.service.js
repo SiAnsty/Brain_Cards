@@ -92,4 +92,3 @@ export const fetchDeleteCategory = async (id) => {
     return { error };
   }
 };
-

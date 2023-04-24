@@ -25,4 +25,3 @@ export const showAlert = (text, time = 3000) => {
     }, 200);
   }, time);
 };
-
