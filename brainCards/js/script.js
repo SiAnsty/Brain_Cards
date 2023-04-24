@@ -47,7 +47,6 @@ const initApp = async () => {
     allSectioUnmount();
     headerObj.updateHeaderTitle('Категории');
     categoryObj.mount(dataCategories);
-    
   };
 
   const renderIndex = async e => {
